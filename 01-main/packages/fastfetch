@@ -1,7 +1,8 @@
 DEFVER=1
-get_github_releases "LinusDierheimer/fastfetch" "latest"
+ARCHS_SUPPORTED="aarch64 x86_64"
+get_github_releases "fastfetch-cli/fastfetch" "latest"
 if [ "${ACTION}" != "prettylist" ]; then
-    URL=$(grep "browser_download_url.*Linux\.deb\"" "${CACHE_FILE}" | head -n1 | cut -d'"' -f4)
+    URL=$(grep "browser_download_url.*linux-${HOST_CPU}\.deb\"" "${CACHE_FILE}" | head -n1 | cut -d'"' -f4)
     VERSION_PUBLISHED="$(echo "${URL}" | cut -d'/' -f8)"
 fi
 PRETTY_NAME="FastFetch"
