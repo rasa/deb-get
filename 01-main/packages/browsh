@@ -6,13 +6,10 @@ if [[ "${URL_ARCH}" =~ ^(arm|armvf)$ ]]; then
 elif [[ "${URL_ARCH}" =~ i386 ]]; then
     URL_ARCH=386
 fi
-# didn't work for me:
-#get_github_releases "browsh-org/browsh"
-get_website "https://github.com/browsh-org/browsh/releases"
+get_github_releases "browsh-org/browsh"
 if [ "${ACTION}" != "prettylist" ]; then
-#    URL=$(grep "browser_download_url.*${URL_ARCH}\.deb\"" "${CACHE_FILE}" | head -n1 | cut -d'"' -f4)
-    URL=$(grep -o "href=\".*${URL_ARCH}\.deb\"" "${CACHE_FILE}" | head -n1 | cut -d'"' -f2)
-    VERSION_PUBLISHED="$(echo "${URL}" | sed -E 's|.*/v([0-9.]*)/.*|\1|')"
+    URL=$(grep "browser_download_url.*${URL_ARCH}\.deb\"" "${CACHE_FILE}" | head -n1 | cut -d'"' -f4)
+    VERSION_PUBLISHED=$(grep -Eo '/v[^/]*' <<<"${URL}" | cut -d 'v' -f 2)
 fi
 PRETTY_NAME="browsh"
 WEBSITE="https://github.com/browsh-org/browsh"
