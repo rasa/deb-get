@@ -1,0 +1,36 @@
+DEFVER=1
+ARCHS_SUPPORTED="amd64 arm64 armv6 armv7 armvf i386"
+URL_ARCH="${HOST_ARCH}"
+if [[ "${URL_ARCH}" =~ ^(arm|armvf)$ ]]; then
+    URL_ARCH=armv7
+elif [[ "${URL_ARCH}" =~ i386 ]]; then
+    URL_ARCH=386
+fi
+get_github_releases "browsh-org/browsh"
+# ARCHS_SUPPORTED=$(grep "browser_download_url.*deb" "${CACHE_FILE}" | cut -d'"' -f 4 | cut -d_ -f 4 | cut -d. -f 1 | sort -u)
+#cp -v "${CACHE_FILE}" /tmp/browsh.json >/dev/tty
+#curl -L \
+#  -H "Accept: application/vnd.github+json" \
+#  -H "Authorization: Bearer ${DEBGET_TOKEN}" \
+#  -H "X-GitHub-Api-Version: 2022-11-28" \
+#  https://api.github.com/repos/browsh-org/browsh/releases >/tmp/browsh2.json
+#get_website "https://github.com/browsh-org/browsh/releases"
+#cp -v "${CACHE_FILE}" /tmp/browsh.html
+if [ "${ACTION}" != "prettylist" ]; then
+#printf 'URL_ARCH=%s\n' "${URL_ARCH}" >/dev/tty
+# "browser_download_url": "https://github.com/browsh-org/browsh/releases/download/v1.8.2/browsh_1.8.2_linux_arm64.deb"
+#echo grep \"browser_download_url.*${URL_ARCH}.*deb\" \"${CACHE_FILE}\" >/dev/tty
+#grep "browser_download_url.*${URL_ARCH}.*deb" "${CACHE_FILE}"
+#echo grep \"browser_download_url.*${URL_ARCH}.*deb\" \"${CACHE_FILE}\" \| head -n 1 >/dev/tty
+#grep "browser_download_url.*${URL_ARCH}.*deb" "${CACHE_FILE}" | head -n 1
+#echo grep \"browser_download_url.*${URL_ARCH}.*deb\" \"${CACHE_FILE}\" \| head -n 1 \| cut -d\'\"\' -f4 >/dev/tty
+#grep "browser_download_url.*${URL_ARCH}.*deb" "${CACHE_FILE}" | head -n 1 | cut -d'"' -f4
+    URL=$(grep "browser_download_url.*${URL_ARCH}.*deb" "${CACHE_FILE}" | head -n 1 | cut -d'"' -f4)
+#printf 'URL=%s\n' "${URL}" >/dev/tty
+#    URL=$(grep -o "href=\".*${URL_ARCH}\.deb\"" "${CACHE_FILE}" | head -n1 | cut -d'"' -f2)
+    VERSION_PUBLISHED=$(sed -E 's|.*/v([0-9.]*)/.*|\1|' <<<"${URL}")
+#printf 'VERSION_PUBLISHED=%s\n' "${VERSION_PUBLISHED}" >/dev/tty
+fi
+PRETTY_NAME="browsh"
+WEBSITE="https://github.com/browsh-org/browsh"
+SUMMARY="A fully interactive, real-time, and modern text-based browser rendered to TTYs and browsers."
