@@ -6,6 +6,7 @@ if [[ "${URL_ARCH}" =~ ^(arm|armvf)$ ]]; then
 elif [[ "${URL_ARCH}" =~ i386 ]]; then
     URL_ARCH=386
 fi
+<<<<<<< HEAD
 get_github_releases "browsh-org/browsh"
 # ARCHS_SUPPORTED=$(grep "browser_download_url.*deb" "${CACHE_FILE}" | cut -d'"' -f 4 | cut -d_ -f 4 | cut -d. -f 1 | sort -u)
 #cp -v "${CACHE_FILE}" /tmp/browsh.json >/dev/tty
@@ -30,6 +31,15 @@ if [ "${ACTION}" != "prettylist" ]; then
 #    URL=$(grep -o "href=\".*${URL_ARCH}\.deb\"" "${CACHE_FILE}" | head -n1 | cut -d'"' -f2)
     VERSION_PUBLISHED=$(sed -E 's|.*/v([0-9.]*)/.*|\1|' <<<"${URL}")
 #printf 'VERSION_PUBLISHED=%s\n' "${VERSION_PUBLISHED}" >/dev/tty
+=======
+# didn't work for me:
+#get_github_releases "browsh-org/browsh"
+get_website "https://github.com/browsh-org/browsh/releases"
+if [ "${ACTION}" != "prettylist" ]; then
+#    URL=$(grep "browser_download_url.*${URL_ARCH}\.deb\"" "${CACHE_FILE}" | head -n1 | cut -d'"' -f4)
+    URL=$(grep -o "href=\".*${URL_ARCH}\.deb\"" "${CACHE_FILE}" | head -n1 | cut -d'"' -f2)
+    VERSION_PUBLISHED="$(echo "${URL}" | sed -E 's|.*/v([0-9.]*)/.*|\1|')"
+>>>>>>> 864568d (Add browsh)
 fi
 PRETTY_NAME="browsh"
 WEBSITE="https://github.com/browsh-org/browsh"
