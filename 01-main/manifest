@@ -37,7 +37,7 @@ com.github.tkashkin.gamehub
 copyq
 #corectrl
 cosign
-croc
+# croc: No longer provides .debs. See https://github.com/schollz/croc/issues/654
 crow-translate
 cronopete
 crossover
