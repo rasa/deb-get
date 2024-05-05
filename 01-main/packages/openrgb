@@ -7,9 +7,9 @@ if [ "${ACTION}" != "prettylist" ]; then
         buster)
             URL="https://openrgb.org/$( grep -o -E "/releases/release_[[:digit:]]+\.[[:digit:]]+/openrgb_[[:digit:]]+\.[[:digit:]]_${HOST_ARCH}_buster_[[:digit:]]+\.deb" "${CACHE_FILE}" )"
         ;;
-        bullseye|focal|jammy)
+        bullseye|focal|jammy|noble)
             URL="https://openrgb.org/$( grep -o -E "/releases/release_[[:digit:]]+\.[[:digit:]]+/openrgb_[[:digit:]]+\.[[:digit:]]_${HOST_ARCH}_bullseye_[[:digit:]]+\.deb" "${CACHE_FILE}" )"
-        ;;        
+        ;;
         *)
             URL="https://openrgb.org/$( grep -o -E "/releases/release_[[:digit:]]+\.[[:digit:]]+/openrgb_[[:digit:]]+\.[[:digit:]]_${HOST_ARCH}_bookworm_[[:digit:]]+\.deb" "${CACHE_FILE}" )"
         ;;
