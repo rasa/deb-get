@@ -6,13 +6,7 @@ if [ "${ACTION}" != "prettylist" ]; then
         22.10) ONLY_ONE="tail -1" ;;
         *) ONLY_ONE="head -1"
     esac
-    {
-    printf 'UPSTREAM_RELEASE=%s\n' "${UPSTREAM_RELEASE}"
-    printf 'ONLY_ONE=%s\n' "${ONLY_ONE}"
-    printf 'UPSTREAM_RELEASE:0:2=%s\n' "${UPSTREAM_RELEASE:0:2}"
-    printf 'HOST_ARCH=%s\n' "${HOST_ARCH}"
-    } > /tmp/flameshot.log
-    URL="$(grep  -E "browser_download_url.*\.${UPSTREAM_ID}-${UPSTREAM_RELEASE:0:2}.*\.${HOST_ARCH}\.deb\"" "${CACHE_DIR}/${APP}.json" | $ONLY_ONE | cut -d'"' -f4)"
+    URL="$(grep  -E "browser_download_url.*\.${UPSTREAM_ID}-.*\.${HOST_ARCH}\.deb\"" "${CACHE_DIR}/${APP}.json" | $ONLY_ONE | cut -d'"' -f4)"
     local VERSION_TMP="${URL##*/flameshot-}"
     VERSION_PUBLISHED="${VERSION_TMP%%[-.]${UPSTREAM_ID}*}"
 fi
