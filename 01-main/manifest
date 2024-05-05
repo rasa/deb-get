@@ -96,6 +96,7 @@ google-chrome-unstable
 google-cloud-cli
 google-earth-pro-stable
 gpu-viewer
+grub-customizer
 grype
 headset
 helio-workstation
@@ -108,9 +109,11 @@ i3
 igdm
 #igdm-pro
 imhex
+indicator-sound-switcher
 influxdb
 influxdb2
 influxdb2-cli
+inkscape
 insomnia
 insync
 ipfs-desktop
@@ -129,6 +132,7 @@ keepassxc
 keybase
 kopia-ui
 koreader
+kse
 ksnip
 kwaterfoxhelper
 lens
@@ -157,8 +161,10 @@ mpdevil
 #ms-office-electron
 ms-365-electron
 mullvad-vpn
+multimc
 nala
 nala-legacy
+nekoray
 neo4j
 #neovim
 nemo-mediainfo-tab
@@ -211,6 +217,7 @@ rambox
 rclone
 resilio-sync
 retroarch
+ripgrep
 rocketchat
 rpi-imager
 rstudio
@@ -220,6 +227,7 @@ sejda-desktop
 #sengi
 shutter-encoder
 signal-desktop
+simple-pwgen
 simplenote
 skypeforlinux
 slack-desktop
@@ -227,7 +235,7 @@ sleek
 smartgit
 sniffnet
 softmaker-office-2021
-indicator-sound-switcher
+songrec
 soundux
 speedtest
 spotify-client
@@ -244,7 +252,7 @@ system-monitoring-center
 tabby-terminal
 tailscale
 tarsnap
-teams
+#teams
 teams-for-linux
 teamviewer
 teip
