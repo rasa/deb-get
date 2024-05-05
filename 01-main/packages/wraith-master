@@ -1,8 +1,9 @@
 DEFVER=1
-get_github_releases "serebit/wraith-master" "latest"
+ARCHS_SUPPORTED="amd64"
 if [ "${ACTION}" != "prettylist" ]; then
-    URL=$(grep "browser_download_url.*\.deb\"" "${CACHE_FILE}" | head -n1 | cut -d'"' -f4)
-    VERSION_PUBLISHED="$(echo "${URL}" | cut -d'/' -f8 | sed 's|v||')"
+    VERSION_PUBLISHED="$(basename "$(unroll_url https://gitlab.com/serebit/wraith-master/-/releases/permalink/latest)")"
+    VERSION_PUBLISHED="${VERSION_PUBLISHED/v/}"
+    URL="https://gitlab.com/serebit/wraith-master/-/raw/binaries/wraith-master-v${VERSION_PUBLISHED}.deb"
 fi
 PRETTY_NAME="wraith-master"
 WEBSITE="https://github.com/serebit/wraith-master"
